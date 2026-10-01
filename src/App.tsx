@@ -43,7 +43,7 @@ function App() {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/users" element={<Users userlist={userList} />} />
-              <Route path="/admins" element={<Admins />} />
+              <Route path="/admins" element={<Admins userlist={userList} />} />
               <Route path="/user/:id" element={<UserPage userlist={userList} />} />
             </Routes>
           </main>

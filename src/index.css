@@ -7,7 +7,7 @@ table {
 	}
 	& td {
 		color: #aaa;
-		border: 1px solid #777;
+		border: 1px solid #446;
 		padding: 0px 5px;
 	}
 	& td:empty {

@@ -9,21 +9,39 @@ export default ({userlist}:{userlist:User[]}) => {
 	return <>
 		<h2 className="flex">
 			{user.profile.name || "Unknown"}
-			{user.roles.find((role:String) => role.toLowerCase() == "user") ? <UserIcon size="12" color="#6c6"></UserIcon> : ""}
-			{user.roles.find((role:String) => role.toLowerCase() == "admin") ? <ShieldCheck size="12" color="#fd0"></ShieldCheck> : ""}
+			<span className="group">{user.roles.find((role:String) => role.toLowerCase() == "user") ? <UserIcon size="12" color="#6c6"></UserIcon> : ""}
+				<div className="pointer-events-none opacity-0 transition group-hover:opacity-100 absolute bg-gray-900 border-1 border-gray-500 rounded-md p-1 text-xs">User</div>
+			</span>
+			<span className="group">{user.roles.find((role:String) => role.toLowerCase() == "admin") ? <ShieldCheck size="12" color="#fd0"></ShieldCheck> : ""}
+				<div className="pointer-events-none opacity-0 transition group-hover:opacity-100 absolute bg-gray-900 border-1 border-gray-500 rounded-md p-1 text-xs">Administrator</div>
+			</span>
 		</h2>
 		<table>
 			<tbody>
 				<tr>
-					<th>Settings</th>
-					<td>{user.settings.theme == "dark" ? <Moon size="18"></Moon> : ""}</td>
-					<td>{user.settings.notifications.email ? <Mail size="18"></Mail> : ""}</td>
-					<td>{user.settings.notifications.push ? <Vibrate size="18"></Vibrate> : <VibrateOff size="18"></VibrateOff>}</td>
+					<th>Username</th>
+					<td>{user.username}</td>
+				</tr>
+				<tr>
+					<th>Email</th>
+					<td>{user.profile.email}</td>
 				</tr>
 				<tr>
 					<th>Address</th>
 					<td>{user.profile.address.street}</td>
 					<td colSpan={2}>{user.profile.address.zipCode}, {user.profile.address.city}</td>
+				</tr>
+				<tr>
+					<th>Settings</th>
+					<td className="group">{user.settings.theme == "dark" ? <Moon size="18"></Moon> : ""}
+						<div className="pointer-events-none opacity-0 transition group-hover:opacity-100 absolute bg-gray-900 border-1 border-gray-500 rounded-md p-1 text-xs">Theme</div>
+					</td>
+					<td className="group">{user.settings.notifications.email ? <Mail size="18"></Mail> : ""}
+						<div className="pointer-events-none opacity-0 transition group-hover:opacity-100 absolute bg-gray-900 border-1 border-gray-500 rounded-md p-1 text-xs">Email notifications</div>
+					</td>
+					<td className="group">{user.settings.notifications.push ? <Vibrate size="18"></Vibrate> : <VibrateOff size="18"></VibrateOff>}
+						<div className="pointer-events-none opacity-0 transition group-hover:opacity-100 absolute bg-gray-900 border-1 border-gray-500 rounded-md p-1 text-xs">Push notifications</div>
+					</td>
 				</tr>
 			</tbody>
 		</table>
