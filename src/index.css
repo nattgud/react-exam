@@ -1,1 +1,16 @@
 @import "tailwindcss";
+
+table {
+	& th {
+		color: #eee;
+		padding: 0px 5px;
+	}
+	& td {
+		color: #aaa;
+		border: 1px solid #777;
+		padding: 0px 5px;
+	}
+	& td:empty {
+		border: none;
+	}
+}

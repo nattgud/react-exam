@@ -6,6 +6,7 @@ import Nav from "./components/Nav"
 import Home from "./pages/Home"
 import Users from "./pages/Users"
 import Admins from "./pages/Admins"
+import UserPage from "./pages/UserPage"
 import { UsersRound } from "lucide-react";
 
 function App() {
@@ -43,6 +44,7 @@ function App() {
               <Route path="/" element={<Home />} />
               <Route path="/users" element={<Users userlist={userList} />} />
               <Route path="/admins" element={<Admins />} />
+              <Route path="/user/:id" element={<UserPage userlist={userList} />} />
             </Routes>
           </main>
         </ErrorBoundary>
