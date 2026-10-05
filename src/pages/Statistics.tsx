@@ -1,5 +1,4 @@
 import type  {User } from "../types/User"
-import UserListUserCard from "../components/UserListUserCard"
 export default ({userlist}:{userlist:User[]}) => {
 	if(!userlist) return <><p>Loading users...</p></>
 	console.log(userlist);
