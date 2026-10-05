@@ -14,3 +14,11 @@ table {
 		border: none;
 	}
 }
+.statTable {
+	& th {
+		font-weight: normal;
+	}
+	& td {
+		font-weight: bold;
+	}
+}

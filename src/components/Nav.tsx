@@ -9,7 +9,7 @@ function Nav(props:Props) {
 		!props.isLoading?
 			<>
 				<NavLink to="/users" className={({isActive}) => `transition hover:text-amber-50 ${isActive?"text-amber-300":""}`}>Users</NavLink>
-				<NavLink to="/admins" className={({isActive}) => `transition hover:text-amber-50 ${isActive?"text-amber-300":""}`}>Administrators</NavLink>
+				<NavLink to="/stats" className={({isActive}) => `transition hover:text-amber-50 ${isActive?"text-amber-300":""}`}>Statistics</NavLink>
 			</>
 			:
 			<span className="text-gray-800">Loading userlist...</span>

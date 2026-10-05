@@ -4,8 +4,7 @@ import { ShieldCheck, User as UserIcon, Moon, Mail, Vibrate, VibrateOff } from "
 export default ({userlist}:{userlist:User[]}) => {
 	if(!userlist) return <><p>Loading users...</p></>
 	const { id } = useParams();
-	console.log(id, userlist.filter(user => user.id == Number(id))[0]);
-	const user:User = userlist.filter(user => user.id == Number(id))[0];
+	const user:User = userlist.filter(user => user.id === Number(id))[0];
 	return <>
 		<h2 className="flex">
 			{user.profile.name || "Unknown"}
@@ -20,27 +19,31 @@ export default ({userlist}:{userlist:User[]}) => {
 			<tbody>
 				<tr>
 					<th>Username</th>
-					<td>{user.username}</td>
+					<td colSpan={2}>{user.username}</td>
 				</tr>
 				<tr>
 					<th>Email</th>
-					<td>{user.profile.email}</td>
+					<td colSpan={2}>{user.profile.email}</td>
 				</tr>
 				<tr>
 					<th>Address</th>
 					<td>{user.profile.address.street}</td>
-					<td colSpan={2}>{user.profile.address.zipCode}, {user.profile.address.city}</td>
+					<td>{user.profile.address.zipCode}, {user.profile.address.city}</td>
 				</tr>
 				<tr>
 					<th>Settings</th>
-					<td className="group">{user.settings.theme == "dark" ? <Moon size="18"></Moon> : ""}
-						<div className="pointer-events-none opacity-0 transition group-hover:opacity-100 absolute bg-gray-900 border-1 border-gray-500 rounded-md p-1 text-xs">Theme</div>
-					</td>
-					<td className="group">{user.settings.notifications.email ? <Mail size="18"></Mail> : ""}
-						<div className="pointer-events-none opacity-0 transition group-hover:opacity-100 absolute bg-gray-900 border-1 border-gray-500 rounded-md p-1 text-xs">Email notifications</div>
-					</td>
-					<td className="group">{user.settings.notifications.push ? <Vibrate size="18"></Vibrate> : <VibrateOff size="18"></VibrateOff>}
-						<div className="pointer-events-none opacity-0 transition group-hover:opacity-100 absolute bg-gray-900 border-1 border-gray-500 rounded-md p-1 text-xs">Push notifications</div>
+					<td colSpan={2}>
+						<div className="flex">
+							<span className="group">{user.settings.theme == "dark" ? <Moon size="18"></Moon> : ""}
+								<div className="pointer-events-none opacity-0 transition group-hover:opacity-100 absolute bg-gray-900 border-1 border-gray-500 rounded-md p-1 text-xs">Theme</div>
+							</span>
+							<span className="group">{user.settings.notifications.email ? <Mail size="18"></Mail> : ""}
+								<div className="pointer-events-none opacity-0 transition group-hover:opacity-100 absolute bg-gray-900 border-1 border-gray-500 rounded-md p-1 text-xs">Email notifications</div>
+							</span>
+							<span className="group">{user.settings.notifications.push ? <Vibrate size="18"></Vibrate> : <VibrateOff size="18"></VibrateOff>}
+								<div className="pointer-events-none opacity-0 transition group-hover:opacity-100 absolute bg-gray-900 border-1 border-gray-500 rounded-md p-1 text-xs">Push notifications</div>
+							</span>
+						</div>
 					</td>
 				</tr>
 			</tbody>
