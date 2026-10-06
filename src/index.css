@@ -22,3 +22,6 @@ table {
 		font-weight: bold;
 	}
 }
+.errormsg {
+	color: #a00;
+}

@@ -1,16 +1,18 @@
-import './App.css'
 import ErrorBoundary from "./ErrorBoundary.tsx";
 import { Routes, Route } from "react-router-dom";
 import { NavLink } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
+
 import Nav from "./components/Nav"
 import Home from "./pages/Home"
 import Users from "./pages/Users"
 import Statistics from "./pages/Statistics.tsx"
 import UserPage from "./pages/UserPage"
+
 import { UsersRound } from "lucide-react";
 
 function App() {
+  // Fetch data from API here so that it can be accessable in all components
   const { data: userList, isLoading, error } = useQuery({
     queryKey: ["userlist"],
     queryFn: async () => {
@@ -24,9 +26,8 @@ function App() {
       );
       return await res.json();
     },
-    staleTime: (24*60*60*1000)/100
+    staleTime: (24*60*60*1000)/100  // staletime to 100th part of a day to meet API requirements
   });
-  if (error) return <p>Error.</p>;
 
   return (
     <>
@@ -36,7 +37,11 @@ function App() {
         </header>
         <ErrorBoundary>
 	        <nav className="text-amber-400 p-2 flex justify-center gap-2 justify-items-center bg-gray-500">
-            <Nav isLoading={isLoading||!userList}></Nav>
+            {
+              !error?
+              <Nav ok={!error} isLoading={isLoading||!userList}></Nav>:
+              <span className="text-sm text-red-800">Couldn't load data</span>
+            }
         	</nav>
         </ErrorBoundary>
         <ErrorBoundary>

@@ -1,7 +1,8 @@
 import type  {User } from "../types/User"
+
 export default ({userlist}:{userlist:User[]}) => {
 	if(!userlist) return <><p>Loading users...</p></>
-	console.log(userlist);
+	
 	return <>
 		<table>
 			<tbody className="statTable">
